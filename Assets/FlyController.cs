@@ -13,21 +13,25 @@ public class FlyController : MonoBehaviour
 
     public bool randomizeMovement = true;
     public bool canMove = true;
+    
+    [SerializeField] private GameObject visuals;
     private void Start()
     {
+        visuals.transform.localScale = new Vector3(visuals.transform.localScale.x * Mathf.Sign(Random.Range(-1f, 1f)), visuals.transform.localScale.y, visuals.transform.localScale.z);
         startPosition = transform.position;
         
         //Randomizing the start variables
         if (randomizeMovement)
         {
-            speed = Random.Range(0.5f, 1.5f) * Mathf.Sign(Random.Range(-1f, 1f));
+            speed = Random.Range(0.5f, 1.5f);
             
             width = Random.Range(1f, 4f) * Mathf.Sign(Random.Range(-1f, 1f));
             
             height = Random.Range(1f, 3f) * Mathf.Sign(Random.Range(-1f, 1f));
-            
-            elapsedTime = Random.Range(0, 100f);
         }
+
+        speed *= Mathf.Sign(Random.Range(-1f, 1f));
+        elapsedTime = Random.Range(0, 100f);
     }
 
     private void Update()

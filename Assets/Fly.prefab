@@ -296,6 +296,7 @@ MonoBehaviour:
   height: 2
   randomizeMovement: 1
   canMove: 1
+  visuals: {fileID: 805102297237678662}
 --- !u!1 &2950172567336726839
 GameObject:
   m_ObjectHideFlags: 0
