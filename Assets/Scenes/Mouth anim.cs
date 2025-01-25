@@ -1,32 +1,34 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Mouthanim : MonoBehaviour
 {
+    public static Mouthanim instance;
     private Animator animator;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
+        instance = this;
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeState(string state, float delay = 0)
     {
-        if(Input.GetKey("left"))
+        StartCoroutine(changeAnim(state, delay));
+    }
+    
+    IEnumerator changeAnim(string state, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        switch (state)
         {
-            animator.Play("Open");
-
-        }
-        else if(Input.GetKey("right"))
-        {
-            animator.Play("Mouth animation");
-
-        }
-        else if(Input.GetKey("up"))
-        {
-            animator.Play("Burp");
-
+            case "Open": animator.Play("Open");
+                break;
+            case "Closed": animator.Play("Closed");
+                break;
+            case "Burp": animator.Play("Burp");
+                break;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class tongueController : MonoBehaviour
     [SerializeField] private float lingerDuration;
     [SerializeField] private Transform mouthPosition;
     private Vector3 targetPosition;
-    [SerializeField] private bool isFiring;
+    private bool isFiring;
     private float curLinger;
 
     [SerializeField] private GameObject grabbedObject;
@@ -28,6 +29,7 @@ public class tongueController : MonoBehaviour
             targetPosition = mouseWorldPos;
             curLinger = lingerDuration;
             isFiring = true;
+            Mouthanim.instance.ChangeState("Open");
         }
     }
 

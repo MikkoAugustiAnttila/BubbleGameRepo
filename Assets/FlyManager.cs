@@ -56,7 +56,7 @@ public class FlyManager : MonoBehaviour
             flyCount = GameObject.FindGameObjectsWithTag("Fly").Length;
         }
         soundManager.instance.PlaySound("Burp");
-        Debug.Log("All flies have been eaten");
+        Mouthanim.instance.ChangeState("Burp");
         burpEffect.SetActive(true);
     }
 }
