@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class tongueController : MonoBehaviour
@@ -11,12 +12,14 @@ public class tongueController : MonoBehaviour
     private Vector3 targetPosition;
     [SerializeField] private bool isFiring;
     private float curLinger;
+
+    [SerializeField] private GameObject grabbedObject;
     
     
     void Update()
     {
         
-        if(Input.GetMouseButton(0) && !isFiring)
+        if(Input.GetMouseButton(0) && !isFiring && !grabbedObject)
         {
             var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.z = 0f;
@@ -25,6 +28,8 @@ public class tongueController : MonoBehaviour
             curLinger = lingerDuration;
             isFiring = true;
         }
+        
+        //if(grabbedObject) grabbedObject.transform.position = transform.position;
     }
 
     private void FixedUpdate()
@@ -33,12 +38,22 @@ public class tongueController : MonoBehaviour
         {
             rb.AddForce((targetPosition - transform.position) * force, ForceMode2D.Impulse);
             curLinger -= Time.fixedDeltaTime;
-            Debug.Log(curLinger);
             if (curLinger <= 0)
             {
                 isFiring = false;
                 rb.AddForce((mouthPosition.position - transform.position) * returnForce, ForceMode2D.Impulse);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Fly") && isFiring && !grabbedObject)
+        {
+            grabbedObject = other.gameObject;
+            grabbedObject.transform.position = transform.position;
+            HingeJoint2D newJoint = other.AddComponent<HingeJoint2D>();
+            newJoint.connectedBody = rb;
         }
     }
 }
