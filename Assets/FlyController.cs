@@ -48,6 +48,7 @@ public class FlyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
+            soundManager.instance.PlaySound("Bite");
         }
     }
 }

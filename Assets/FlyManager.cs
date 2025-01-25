@@ -10,6 +10,9 @@ public class FlyManager : MonoBehaviour
     [SerializeField] private GameObject burpEffect;
     [SerializeField] private BoxCollider2D bugSpawnBounds;
 
+    [SerializeField] private Vector2 ribbitTime;
+    [SerializeField] private float remainingRibbitTime;
+
     private void Start()
     {
         int rng = Random.Range(3, 6);
@@ -24,8 +27,26 @@ public class FlyManager : MonoBehaviour
         
         flyCount = GameObject.FindGameObjectsWithTag("Fly").Length;
         StartCoroutine(FlyCheck());
+        
+        remainingRibbitTime = Random.Range(ribbitTime.x, ribbitTime.y);
     }
-    
+
+    private void Update()
+    {
+        if (flyCount > 0)
+        {
+            if (remainingRibbitTime <= 0)
+            {
+                soundManager.instance.PlaySound("Ribbit");
+                remainingRibbitTime = Random.Range(ribbitTime.x, ribbitTime.y);
+            }
+            else
+            {
+                remainingRibbitTime -= Time.deltaTime;
+            }
+        }
+    }
+
     // Periodically check how many flies exist
     IEnumerator FlyCheck()
     {
@@ -34,6 +55,7 @@ public class FlyManager : MonoBehaviour
             yield return new WaitForSeconds(3);
             flyCount = GameObject.FindGameObjectsWithTag("Fly").Length;
         }
+        soundManager.instance.PlaySound("Burp");
         Debug.Log("All flies have been eaten");
         burpEffect.SetActive(true);
     }

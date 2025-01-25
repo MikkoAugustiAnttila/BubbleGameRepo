@@ -21,6 +21,7 @@ public class tongueController : MonoBehaviour
         
         if(Input.GetMouseButton(0) && !isFiring && !grabbedObject)
         {
+            soundManager.instance.PlaySound("Boing");
             var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.z = 0f;
 
@@ -28,8 +29,6 @@ public class tongueController : MonoBehaviour
             curLinger = lingerDuration;
             isFiring = true;
         }
-        
-        //if(grabbedObject) grabbedObject.transform.position = transform.position;
     }
 
     private void FixedUpdate()
@@ -50,6 +49,8 @@ public class tongueController : MonoBehaviour
     {
         if (other.CompareTag("Fly") && isFiring && !grabbedObject)
         {
+            soundManager.instance.PlaySound("Splat");
+            
             grabbedObject = other.gameObject;
             grabbedObject.transform.position = transform.position;
             HingeJoint2D newJoint = other.AddComponent<HingeJoint2D>();

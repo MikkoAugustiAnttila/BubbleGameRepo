@@ -386,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 382988438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1293,6 +1293,7 @@ GameObject:
   - component: {fileID: 1005720977}
   - component: {fileID: 1005720976}
   - component: {fileID: 1005720978}
+  - component: {fileID: 1005720979}
   m_Layer: 0
   m_Name: Management
   m_TagString: Untagged
@@ -1316,6 +1317,8 @@ MonoBehaviour:
   flyPrefab: {fileID: 2266791675262265352, guid: 73502aab948aafb49847a0892886193d, type: 3}
   burpEffect: {fileID: 1231239353}
   bugSpawnBounds: {fileID: 1005720978}
+  ribbitTime: {x: 0.5, y: 5}
+  remainingRibbitTime: 0
 --- !u!4 &1005720977
 Transform:
   m_ObjectHideFlags: 0
@@ -1378,6 +1381,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 9, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &1005720979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005720975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd9d8191c6cdde4496f8b56c97badd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - id: Splat
+    clip: {fileID: 8300000, guid: c39010dc14b7e904ab367bd48034dff1, type: 3}
+  - id: Burp
+    clip: {fileID: 8300000, guid: 2b4312ce75a4e2a4fa013a34e2940545, type: 3}
+  - id: Boing
+    clip: {fileID: 8300000, guid: 893e5d5b34a3cd245a0d5b17a5a21dc3, type: 3}
+  - id: Ribbit
+    clip: {fileID: 8300000, guid: 5aa5a5cf84993b649a9134f183ac3ecd, type: 3}
+  - id: Bite
+    clip: {fileID: 8300000, guid: a64da213dd7b718478b151583cafc439, type: 3}
 --- !u!1 &1039332407
 GameObject:
   m_ObjectHideFlags: 0
