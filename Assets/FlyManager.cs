@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class FlyManager : MonoBehaviour
@@ -12,10 +13,11 @@ public class FlyManager : MonoBehaviour
 
     [SerializeField] private Vector2 ribbitTime;
     [SerializeField] private float remainingRibbitTime;
+    [SerializeField] private Animator transitionAnimator;
 
     private void Start()
     {
-        int rng = Random.Range(3, 6);
+        int rng = Random.Range(5, 7);
         for (int i = 0; i < rng; i++)
         {
             float x = Random.Range(bugSpawnBounds.bounds.min.x, bugSpawnBounds.bounds.max.x);
@@ -58,5 +60,9 @@ public class FlyManager : MonoBehaviour
         soundManager.instance.PlaySound("Burp");
         Mouthanim.instance.ChangeState("Burp");
         burpEffect.SetActive(true);
+        
+        yield return new WaitForSeconds(3);
+        transitionAnimator.Play("TransitionIn");
+        SceneManager.LoadScene("TitleScreen");
     }
 }
