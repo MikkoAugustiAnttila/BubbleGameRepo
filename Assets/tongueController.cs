@@ -54,6 +54,11 @@ public class tongueController : MonoBehaviour
             grabbedObject.transform.position = transform.position;
             HingeJoint2D newJoint = other.AddComponent<HingeJoint2D>();
             newJoint.connectedBody = rb;
+
+            if (grabbedObject.GetComponent<FlyController>())
+            {
+                grabbedObject.GetComponent<FlyController>().canMove = false;
+            }
         }
     }
 }
