@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: c188d36c5f396f14ebbb778a989b6e10
+guid: 4a72726b44293d6418c9ff77916684c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7265413998432828749
-    second: 2025-01-25 20_46_27-BubbleGameRepo - TitleScreen - Windows, Mac, Linux
-      - Unity 6 (6000.0.35f1) _DX11_0
+      213: -768360122129859928
+    second: New Project(8)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,14 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2025-01-25 20_46_27-BubbleGameRepo - TitleScreen - Windows, Mac, Linux
-        - Unity 6 (6000.0.35f1) _DX11_0
+      name: New Project(8)_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 185
         y: 0
-        width: 330
-        height: 268
+        width: 629
+        height: 1000
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d4d3dbaa98fe3d460800000000000000
-      internalID: 7265413998432828749
+      spriteID: 8aabfd43a8c3655f0800000000000000
+      internalID: -768360122129859928
       vertices: []
       indices: 
       edges: []
@@ -176,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2025-01-25 20_46_27-BubbleGameRepo - TitleScreen - Windows, Mac, Linux - Unity 6 (6000.0.35f1) _DX11_0: 7265413998432828749
+      New Project(8)_0: -768360122129859928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
