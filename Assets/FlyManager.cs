@@ -63,6 +63,6 @@ public class FlyManager : MonoBehaviour
         
         yield return new WaitForSeconds(3);
         transitionAnimator.Play("TransitionIn");
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("VictoryScreen");
     }
 }
